@@ -1,0 +1,70 @@
+luciusgao2001 p1bitmanip grade: 95/103 
+ 
+https://phoenixforge.cs.uchicago.edu/svn/luciusgao2001-cs154-spr-20/p1bitmanip 
+Grading revision: 34 
+
+$ make
+gcc -O -Wall -lm -o btest bits.c btest.c decl.c tests.c
+btest.c: In function 'test_function':
+btest.c:332:23: warning: 'arg_test_range[1]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     if (arg_test_range[1] < 1)
+         ~~~~~~~~~~~~~~^~~
+gcc -O -Wall -o ishow ishow.c
+
+$ ./driver.pl
+1. Running './dlc -z' to identify coding rules violations.
+dlc:bits.c:252:bitCount: Warning: 46 operators exceeds max of 40
+
+2. Compiling and running './btest -g' to determine correctness score.
+gcc -O -Wall -lm -o btest bits.c btest.c decl.c tests.c 
+btest.c: In function 'test_function':
+btest.c:332:23: warning: 'arg_test_range[1]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     if (arg_test_range[1] < 1)
+         ~~~~~~~~~~~~~~^~~
+
+3. Running './dlc -Z' to identify operator count violations.
+dlc:save-bits.c:252:bitCount: Warning: 46 operators exceeds max of 40
+dlc:save-bits.c:252:bitCount: Zapping function body!
+
+4. Compiling and running './btest -g -r 2' to determine performance score.
+gcc -O -Wall -lm -o btest bits.c btest.c decl.c tests.c 
+save-bits.c: In function 'bitCount':
+save-bits.c:250:6: warning: unused variable 'ans' [-Wunused-variable]
+  int ans = total1 + total2 + total3 + total4 + total5 + total6 + total7 +total8;
+      ^~~
+btest.c: In function 'test_function':
+btest.c:332:23: warning: 'arg_test_range[1]' may be used uninitialized in this function [-Wmaybe-uninitialized]
+     if (arg_test_range[1] < 1)
+         ~~~~~~~~~~~~~~^~~
+
+
+5. Running './dlc -e' to get operator count of each function.
+
+Correctness Results	Perf Results
+Points	Rating	Errors	Points	Ops	Puzzle
+4	4	0	2	3	absVal
+3	3	0	2	10	addOK
+2	2	0	2	7	allEvenBits
+4	4	0	2	5	bang
+4	4	0	0	46	bitCount
+1	1	0	2	3	bitNor
+2	2	0	2	25	byteSwap
+3	3	0	2	7	conditional
+3	3	0	2	6	ezThreeFourths
+2	2	0	2	7	fitsBits
+2	2	0	2	3	getByte
+0	4	1	0	0	greatestBitPos
+2	2	0	2	2	implication
+3	3	0	2	13	isAsciiDigit
+2	2	0	2	2	isEqual
+3	3	0	2	13	isLess
+3	3	0	2	6	isNonNegative
+4	4	0	2	10	isPower2
+1	1	0	2	6	isTmin
+1	1	0	2	1	minusOne
+3	3	0	2	10	rotateLeft
+3	3	0	2	11	satMul2
+
+Score = 95/103 [55/59 Corr + 40/44 Perf] (196 total operators)
+
+Final Grade: 95/103
